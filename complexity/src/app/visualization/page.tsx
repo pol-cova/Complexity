@@ -64,12 +64,6 @@ export default function VisualizationPage() {
         >
           <Download className="h-4 w-4" />
         </Button>
-        <a
-          href="/"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground"
-        >
-          <RotateCcw className="h-4 w-4" />
-        </a>
       </div>
 
       {/* Riemann Surface Button */}
