@@ -91,7 +91,7 @@ export default function RiemannSurface({ function: fn }: RiemannSurfaceProps) {
           // Color based on height within current sheet
           const color = getDomainColor(sheetHeight, 1);
           colors.push(color.r, color.g, color.b);
-        } catch (error) {
+        } catch (_error) {
           const x = r * Math.cos(theta);
           const z_coord = r * Math.sin(theta);
           const sheetNumber = Math.floor(theta / (2 * Math.PI));
