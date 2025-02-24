@@ -89,7 +89,7 @@ export default function ComplexPlot({
       // Replace 'z^2' with 'pow(z,2)' for mathjs compatibility
       const normalizedFn = (fnProp || "z")
         .replace(/\^/g, ",")
-        .replace(/([0-9a-zA-Z]),([0-9]+)/g, "pow($1,$2)");
+        .replace(/([0-9a-zA-Z]),(-?\d*\.?\d+)/g, "pow($1,$2)");
       parsedFn = parse(normalizedFn);
     } catch (_error) {
       console.error("Invalid function:");
