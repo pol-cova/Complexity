@@ -47,7 +47,7 @@ export default function RiemannSurface({ function: fn }: RiemannSurfaceProps) {
     try {
       const normalizedFn = (fn || "z")
         .replace(/\^/g, ",")
-        .replace(/([0-9a-zA-Z]),([0-9]+)/g, "pow($1,$2)");
+        .replace(/([0-9a-zA-Z]),(-?\d*\.?\d+)/g, "pow($1,$2)");
       parsedFn = parse(normalizedFn);
     } catch (error) {
       console.error("Invalid function:", error);
