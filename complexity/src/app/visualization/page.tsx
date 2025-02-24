@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Download, Eye, RotateCcw } from "lucide-react";
-
+import Link from "next/link";
 // Dynamically import canvas components to prevent context sharing
 const MainVisualization = dynamic(
   () =>
@@ -64,6 +64,12 @@ export default function VisualizationPage() {
         >
           <Download className="h-4 w-4" />
         </Button>
+        <Link
+          href="/"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+        >
+          <RotateCcw className="h-4 w-4" />
+        </Link>
       </div>
 
       {/* Riemann Surface Button */}

@@ -9,7 +9,7 @@ import {
   DoubleSide,
   Color,
 } from "three";
-import { useThree } from "@react-three/fiber";
+// import { useThree } from "@react-three/fiber";
 import { useControls } from "leva";
 import { evaluate, parse, complex, abs, arg } from "mathjs";
 
@@ -57,7 +57,7 @@ const getDomainColor = (w: any, maxModulus: number) => {
     const lightness = 0.4 + 0.3 * normalizedMod;
 
     return new Color().setHSL(hue, saturation, lightness);
-  } catch (error) {
+  } catch (_error) {
     return new Color(0, 0, 0);
   }
 };
@@ -67,7 +67,7 @@ export default function ComplexPlot({
   function: fnProp,
   plotRange = defaultPlotRange,
 }: ComplexPlotProps) {
-  const { scene, gl } = useThree();
+  // const { scene, gl } = useThree();
 
   const { resolution } = useControls({
     resolution: { value: 150, min: 50, max: 300, step: 10 },
@@ -91,8 +91,8 @@ export default function ComplexPlot({
         .replace(/\^/g, ",")
         .replace(/([0-9a-zA-Z]),([0-9]+)/g, "pow($1,$2)");
       parsedFn = parse(normalizedFn);
-    } catch (error) {
-      console.error("Invalid function:", error);
+    } catch (_error) {
+      console.error("Invalid function:");
       return geo;
     }
 
@@ -108,7 +108,7 @@ export default function ComplexPlot({
           const w = evaluate(parsedFn.toString(), { z });
           const modulus = abs(w);
           maxModulus = Math.max(maxModulus, modulus);
-        } catch (error) {
+        } catch (_error) {
           // Skip error points
         }
       }
@@ -137,7 +137,7 @@ export default function ComplexPlot({
           // Apply domain coloring
           const color = getDomainColor(w, maxModulus);
           colors.push(color.r, color.g, color.b);
-        } catch (error) {
+        } catch (_error) {
           // Handle singularities by interpolating neighboring points
           vertices.push(x, y, 0);
           colors.push(0, 0, 0);
